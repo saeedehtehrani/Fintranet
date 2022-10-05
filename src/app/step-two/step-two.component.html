@@ -1,0 +1,37 @@
+<div class="stepsdemo-content">
+    <p-card>
+        <ng-template pTemplate="title">
+            Complete Form
+        </ng-template>
+        <ng-template pTemplate="content">
+            <div class="grid p-fluid">
+                <div class="field col-6">
+                    <label for="withoutgrouping">Number</label>
+                    <p-inputNumber [(ngModel)]="value" mode="decimal" inputId="withoutgrouping" [useGrouping]="false">
+                    </p-inputNumber>
+                </div>
+                <div class="field col-6">
+                    <label for="template">Date Template</label>
+                    <p-calendar [(ngModel)]="date12" [minDate]="minDate" [maxDate]="maxDate" inputId="template" [showIcon]="true">
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{textDecoration: (date.day > this.endDate) ? 'line-through' : 'inherit'}">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar>
+                </div>
+                <div class="field col-6">
+                    <label for="statusId">Status</label>
+                    <p-dropdown [options]="status" [(ngModel)]="selectedStatus" inputId="statusId" optionLabel="name" optionValue="code"></p-dropdown>
+                </div>
+                <div class="field col-6">
+                    <label for="source">Source of fund</label>
+                    <input type="text" pInputText pKeyFilter="alpha" placeholder="Alphabetic" id="source">
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="grid grid-nogutter justify-content-end">
+                <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

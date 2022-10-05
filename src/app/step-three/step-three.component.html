@@ -1,0 +1,29 @@
+<p-toast></p-toast>
+
+<p-card>
+    <h5>Events</h5>
+    <p>onRowSelect and onRowUnselect are available as selection events.</p>
+    <p-table [value]="users" selectionMode="single" [(selection)]="selectedUser" dataKey="code" responsiveLayout="scroll" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>name</th>
+                <th>username</th>
+                <th>email</th>
+                <th>phone</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr [pSelectableRow]="user">
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+        <div class="grid grid-nogutter justify-content-end">
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+    </ng-template>
+</p-card>
